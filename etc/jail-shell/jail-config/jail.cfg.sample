@@ -63,7 +63,7 @@ dir /proc/ 0755 root:root
 dir /usr/bin 0755 root:root
 dir /usr/sbin 0755 root:root
 dir /etc/security 0755 root:root
-dir /usr/lib/terminfo 0755 root:root
+dir /usr/share/terminfo 0755 root:root
 
 # basic configration files
 clink /etc/ld.so.conf /etc/ld.so.conf
@@ -122,12 +122,22 @@ clink /usr/bin/watch /usr/bin/watch
 clink /usr/bin/which /usr/bin/which
 clink /usr/bin/xargs /usr/bin/xargs
 clink /usr/bin/find /usr/bin/find
+clink /usr/bin/ssh /usr/bin/ssh
+clink /usr/sbin/ip /usr/sbin/ip
+clink /usr/sbin/ifconfig /usr/sbin/ifconfig
+clink /usr/bin/rsync /usr/bin/rsync
+clink /usr/bin/who /usr/bin/who
+clink /usr/bin/uptime /usr/bin/uptime
+clink /usr/bin/telnet /usr/bin/telnet
+clink /usr/bin/top /usr/bin/top
+clink /usr/bin/ping /user/bin/ping
 
 # Base directory binding configuration
 # Set directory read-only, and prohibit device files 
 bind / ro,nodev,nosuid
+bind /home rw,nodev,nosuid
 bind /dev ro,dev,noexec,nosuid
-bind /usr/lib/terminfo /usr/lib/terminfo ro,nodev,nosuid
+bind /usr/share/terminfo /usr/share/terminfo ro,nodev,nosuid
 
 # export a writable upload directory.
 # dir /upload 0755 root:root
@@ -136,3 +146,5 @@ bind /usr/lib/terminfo /usr/lib/terminfo ro,nodev,nosuid
 # system command list
 # this used for user to change password.
 cmd /usr/bin/passwd /usr/bin/passwd -:-
+cmd /usr/bin/ping /usr/bin/ping root:root
+
