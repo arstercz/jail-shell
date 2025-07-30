@@ -96,7 +96,7 @@ add_user_passwd()
 	fi
 
 	if [ ! -d "$ROOT_DIR_RW/$HOME_DIR" ]; then
-		mkdir $ROOT_DIR_RW/$HOME_DIR
+		mkdir -m 0700 $ROOT_DIR_RW/$HOME_DIR
 		chown $USER_ID:$GROUP_ID $ROOT_DIR_RW/$HOME_DIR
 	fi
 
