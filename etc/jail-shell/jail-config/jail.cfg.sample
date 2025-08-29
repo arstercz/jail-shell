@@ -64,6 +64,7 @@ dir /usr/bin 0755 root:root
 dir /usr/sbin 0755 root:root
 dir /etc/security 0755 root:root
 dir /usr/share/terminfo 0755 root:root
+dir /usr/lib/locale 0755 root:root
 
 # basic configration files
 clink /etc/ld.so.conf /etc/ld.so.conf
@@ -71,6 +72,8 @@ clink /etc/security/limits.conf /etc/security/limits.conf
 clink /etc/nsswitch.conf /etc/nsswitch.conf
 clink /etc/inputrc /etc/inputrc
 clink /etc/localtime /etc/localtime
+clink /etc/locale.conf /etc/locale.conf
+clink /usr/lib/locale/locale-archive /usr/lib/locale/locale-archive
 file /usr/local/jail-shell/misc/rootfs/etc/profile /etc/profile 0755 root:root
 
 # basic device files
@@ -123,6 +126,7 @@ clink /usr/bin/which /usr/bin/which
 clink /usr/bin/xargs /usr/bin/xargs
 clink /usr/bin/find /usr/bin/find
 clink /usr/bin/ssh /usr/bin/ssh
+clink /usr/bin/ssh-agent /usr/bin/ssh-agent
 clink /usr/sbin/ip /usr/sbin/ip
 clink /usr/sbin/ifconfig /usr/sbin/ifconfig
 clink /usr/bin/rsync /usr/bin/rsync
@@ -131,6 +135,11 @@ clink /usr/bin/uptime /usr/bin/uptime
 clink /usr/bin/telnet /usr/bin/telnet
 clink /usr/bin/top /usr/bin/top
 clink /usr/bin/ping /user/bin/ping
+clink /usr/bin/vi /user/bin/vi
+clink /usr/bin/chown /usr/bin/chown
+clink /usr/bin/chmod /usr/bin/chmod
+clink /usr/bin/env /usr/bin/env
+clink /usr/bin/locale /usr/bin/locale
 
 # Base directory binding configuration
 # Set directory read-only, and prohibit device files 

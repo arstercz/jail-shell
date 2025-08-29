@@ -62,6 +62,7 @@ dir /usr/sbin 0755 root:root
 dir /usr/lib/ 0755 root:root
 dir /usr/lib64/ 0755 root:root
 dir /etc/security 0755 root:root
+dir /usr/lib/locale 0755 root:root
 dir /usr/share/terminfo 0755 root:root
 slink /usr/bin /bin
 slink /usr/sbin /sbin
@@ -74,6 +75,8 @@ clink /etc/security/limits.conf /etc/security/limits.conf
 clink /etc/nsswitch.conf /etc/nsswitch.conf
 clink /etc/inputrc /etc/inputrc
 clink /etc/localtime /etc/localtime
+clink /etc/locale.conf /etc/locale.conf
+clink /usr/lib/locale/locale-archive /usr/lib/locale/locale-archive
 file /usr/local/jail-shell/misc/rootfs/etc/profile /etc/profile 0755 root:root
 
 # basic device files
@@ -133,9 +136,14 @@ clink /usr/sbin/ip /usr/sbin/ip
 clink /usr/sbin/ifconfig /usr/sbin/ifconfig
 clink /usr/bin/top /usr/bin/top
 clink /usr/bin/ssh /usr/bin/ssh
+clink /usr/bin/ssh-agent /usr/bin/ssh-agent
 clink /usr/bin/rsync /usr/bin/rsync
 clink /usr/bin/ping /usr/bin/ping
 clink /usr/bin/vi /usr/bin/vi
+clink /usr/bin/chown /usr/bin/chown
+clink /usr/bin/chmod /usr/bin/chmod
+clink /usr/bin/env /usr/bin/env
+clink /usr/bin/locale /usr/bin/locale
 
 # Base directory binding configuration
 # Set directory read-only, and prohibit device files 
