@@ -229,6 +229,26 @@ open("/etc/ld.so.preload", O_RDONLY)    = -1 ENOENT (No such file or directory)
 ```
 如上表示：/etc/ld-so.preload文件读取时不存在，可能需要将上述文件添加到chroot环境中。这时可使用`clink`，`file`命令将缺失文件添加到chroot环境中。
 
+ssl 请求问题
+============
+参考上述的调试 chroot 环境, 处理 curl `https://....` 问题:
+```
+// Centos 7 环境需要在配置中增加以下信息
+# List of basic directories
+dir /etc/pki/tls/certs 0755 root:root
+dir /etc/pki/ca-trust/extracted/pem 0755 root:root
+
+# basic configration files
+clink /etc/pki/tls/certs/ca-bundle.crt /etc/pki/tls/certs/ca-bundle.crt
+clink /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem
+
+# Basic library list
+clink  /lib64/libsoftokn3.so  /lib64/libsoftokn3.so
+clink  /lib64/libnss3.so  /lib64/libnss3.so
+clink  /lib64/libfreeblpriv3.so  /lib64/libfreeblpriv3.so
+clink  /lib64/libnsspem.so  /lib64/libnsspem.so
+```
+
 License
 ==============
 jail-shell安全受限shell采用GPL-V2 License。
